@@ -1,6 +1,9 @@
-# Cairo’s Parfum — Presença que fica
+# Cairo’s Parfum — O invisível deixa marca
 
-Landing page funcional em Next.js, React e TypeScript. Visual editorial em marfim e bronze, fotografias oficiais dos produtos, catálogo com painéis de notas, narrativa olfativa com rolagem, relatos, descoberta em duas perguntas e atendimento pelo WhatsApp.
+Experiência de marca em Next.js, React e TypeScript. A direção de arte combina seda bordô, luz âmbar, fotografia de campanha e tipografia editorial. A descoberta acontece em uma galeria interativa de fragrâncias, uma narrativa de notas guiada pela rolagem e um atelier pessoal em três escolhas.
+
+- Site: https://cairos-parfum.vercel.app
+- Código: https://github.com/Kryzor-Krux/cairos-parfum — repositório privado.
 
 ## Executar
 
@@ -21,37 +24,46 @@ npm test
 npm run build
 ```
 
+## Experiência e interações
+
+A abertura apresenta uma composição de campanha com movimento de profundidade. O menu em tela cheia dá acesso aos capítulos; a barra superior acompanha o progresso de leitura e os atalhos mobile mantêm seleção, descoberta e contato acessíveis.
+
+A galeria permite trocar entre quatro perfumes por arraste, setas, teclado e seleção direta. Cada fragrância tem atmosfera própria, fotografia oficial, detalhes e notas divididas em abertura, coração e fundo. A consulta leva o nome do perfume para o atendimento.
+
+A narrativa do Khamrah Qahwa revela três capítulos durante a rolagem. As notas são interativas: um toque revela o papel de cada ingrediente na composição. Em telas de pouca altura e com movimento reduzido, os capítulos usam navegação manual e a seção deixa de prender a composição à janela.
+
+O Atelier Cairo’s considera sensação, momento e presença. As três respostas alimentam uma recomendação editorial determinística entre os quatro perfumes da seleção. O resultado apresenta o perfume, notas, justificativa e as escolhas feitas. É possível ajustar as respostas, recomeçar e levar o resultado completo para uma conversa. Os pesos são afinidades com os perfis de notas, sem pontuação de desempenho ou promessa de adequação universal.
+
+Os componentes respeitam a preferência de movimento reduzido. O atendimento usa um diálogo nativo com retorno de foco e fechamento por Escape. Nenhuma mensagem é enviada automaticamente: o visitante escolhe Cássio ou Medeiros e confirma o envio no WhatsApp.
+
 ## Conteúdo e manutenção
 
-- `src/data/perfumes.ts`: produtos, notas, fontes, contatos e relatos.
+- `src/app/page.tsx`: estrutura e conteúdo da experiência.
+- `src/components/maison.tsx`: menu, campanha, introdução, narrativa sensorial e relatos.
+- `src/components/perfume-gallery.tsx`: galeria, gestos e exploração das notas.
+- `src/components/scent-atelier.tsx`: escolhas, progresso e resultado do atelier.
+- `src/components/experience.tsx`: atendimento, diálogo, atalhos mobile e perguntas frequentes.
+- `src/lib/atelier.ts`: perfis, pesos editoriais, recomendação e mensagem do resultado.
 - `src/lib/contact.ts`: mensagens e geração dos links de WhatsApp.
-- `src/components/experience.tsx`: menu, painéis, descoberta e interações.
-- `src/app/page.tsx`: conteúdo e estrutura da página.
-- `src/app/globals.css`: identidade visual e adaptação às telas.
+- `src/data/perfumes.ts`: produtos, notas, fontes, contatos e relatos.
+- `src/app/globals.css`: fundamentos de estilo e elementos compartilhados.
+- `src/app/maison.css`, `gallery.css` e `atelier.css`: direção de arte e adaptações de cada experiência.
 - `public/images/`: imagens locais otimizadas em WebP.
 
-O questionário organiza preferências e as leva para uma conversa; não simula uma recomendação automatizada. Não há carrinho, pagamento, formulário de coleta, analytics ou banco de dados. Nenhuma mensagem é enviada automaticamente: o visitante escolhe o atendente e confirma o envio no WhatsApp.
+Não há carrinho, pagamento, formulário de coleta, analytics ou banco de dados. As escolhas do atelier ficam apenas no estado da página.
 
 ## Fontes e decisões editoriais
 
-As notas e fotografias dos quatro perfumes vêm das páginas dos fabricantes vinculadas nas fichas. As famílias resumidas, sensações e descrições são redação editorial. Disponibilidade está explicitamente desconhecida, sem preços ou estoque inventados.
+As notas e fotografias oficiais dos quatro perfumes vêm das páginas dos fabricantes vinculadas em `src/data/perfumes.ts`. Famílias resumidas, sensações, descrições e afinidades do atelier são redação editorial. Consulte disponibilidade e valores no atendimento; preços e estoque não são simulados.
 
 Os contatos de Cássio e Medeiros foram obtidos no link público da marca (`https://linkme.bio/cairos?utm_source=instagram`). A entrega em Taubaté e região foi informada no perfil público da Cairo’s, com orientação para confirmar a cobertura do endereço.
 
 Os três relatos são trechos do PDF fornecido: páginas 16 (So Candid), 15 (Club de Nuit) e 19 (Fakhar Black). Os dois últimos unem mensagens da mesma conversa com pontuação de leitura. Não publicamos nomes, avatares ou capturas de conversas. Não são garantia de desempenho universal.
 
+Veja `ASSETS.md` para a procedência das fotos oficiais, fontes e demais arquivos. `CAMPAIGN-ASSETS.md` documenta as duas imagens de campanha geradas com IA, suas referências, prompts e otimização. A imagem de campanha do Qahwa é uma interpretação visual; a galeria e o resultado usam a fotografia oficial do frasco.
+
 ## Publicação e manutenção editorial
 
-Validar a seleção comercial, contatos e entrega com a marca; confirmar a autorização para reutilização dos depoimentos e fotos; substituir a assinatura tipográfica e o ícone provisórios pelos arquivos oficiais se disponíveis. Configurar o domínio na variável `NEXT_PUBLIC_SITE_URL` (ver `.env.example`). Na Vercel, o domínio de produção também é detectado pela variável de sistema `VERCEL_PROJECT_PRODUCTION_URL`.
+O projeto está conectado à Vercel pelo repositório privado do GitHub. Configure um domínio personalizado com `NEXT_PUBLIC_SITE_URL` (ver `.env.example`); na Vercel, o domínio de produção também é detectado por `VERCEL_PROJECT_PRODUCTION_URL`.
 
-## Evolução
-
-Os produtos estão separados da interface e já têm IDs, slugs e estados de disponibilidade. Um futuro CMS ou catálogo pode substituir esse módulo. Estoque, checkout e pagamentos exigem uma integração própria; não são simulados nesta versão.
-
-Veja `ASSETS.md` para a procedência dos arquivos visuais.
-
-## Experiência mobile
-
-Carrossel de perfumes com scroll nativo, encaixe central, botões de navegação, teclado e indicador de posição. Scrollytelling de três cenas controla posição do frasco, tipografia e atmosfera sem capturar a rolagem da página. Há atalhos entre cenas e para pular a experiência. A preferência de movimento reduzido troca a sequência por conteúdo estático, com todos os capítulos visíveis. Depoimentos também podem ser arrastados no celular, e a navegação inferior mantém seleção, descoberta e contato ao alcance do polegar.
-
-`src/components/immersive.tsx` contém a narrativa; `src/app/immersive.css` concentra a nova direção mobile.
+Mantenha seleção comercial, contatos e cobertura de entrega atualizados com a marca. A assinatura tipográfica e o ícone podem ser substituídos pelos arquivos oficiais quando disponíveis. Produtos, fontes e perfis estão separados da interface para permitir futuras atualizações de catálogo ou integração com CMS.

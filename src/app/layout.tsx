@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import "./immersive.css";
+import "./maison.css";
+import "./gallery.css";
 const editorial = localFont({
   src: "../../public/fonts/cormorant-garamond-400.ttf",
   variable: "--font-editorial",
@@ -19,16 +20,16 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000"),
   ),
-  title: "Cairo’s Parfum — Presença que fica",
+  title: "Cairo’s Parfum — O invisível deixa marca",
   description:
     "Perfumes importados para encontrar o seu jeito de marcar um momento. Conheça nossa seleção e converse pelo WhatsApp. Taubaté e região.",
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Cairo’s Parfum — Presença que fica",
-    description: "Sua próxima escolha começa com uma conversa.",
+    title: "Cairo’s Parfum — O invisível deixa marca",
+    description: "Explore a coleção. Entre nas notas. Encontre o perfume que conta a sua história.",
     locale: "pt_BR",
     type: "website",
-    images: [{ url: "/images/atmosphere.webp", width: 1536, height: 1024 }],
+    images: [{ url: "/images/hero-campaign.webp", width: 1536, height: 1024 }],
   },
 };
 export default function RootLayout({
