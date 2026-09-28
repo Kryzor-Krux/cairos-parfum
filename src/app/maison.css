@@ -144,7 +144,7 @@ button:focus-visible,a:focus-visible,input:focus-visible {outline:2px solid #bd7
 .journey-reduced {height:auto}
 .journey-reduced .journey-stage {position:relative;min-height:820px;height:auto}
 @media(max-width:639px) {
- .campaign-photo {inset:36% -8% -1%}
+ .campaign-photo {inset:36% -8% -1%;mask-image:linear-gradient(180deg,transparent,#000 17%)}
  .campaign-photo img {object-position:86% center}
  .campaign-product {background:#1c0b0aa6;padding:8px 12px;bottom:144px;backdrop-filter:blur(5px)}
 }
