@@ -38,7 +38,7 @@ function Dialog({
     return () => {
       dialog?.close();
       document.body.style.overflow = oldOverflow;
-      previous?.focus();
+      previous?.focus({ preventScroll: true });
     };
   }, []);
   return (
@@ -111,6 +111,8 @@ export function ExperienceProvider({
                 href={whatsappUrl(c.phone, message)}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-analytics-event="whatsapp_click"
+                data-analytics-source="contact_dialog"
               >
                 <span className="contact-initial">{c.name[0]}</span>
                 <span>
@@ -154,7 +156,12 @@ export function ContactButton({
 export function StickyContact() {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
-    const update = () => setVisible(window.scrollY > 500);
+    let previous = false;
+    const hero = document.querySelector('.cinema');
+    const update = () => {
+      const next = hero ? hero.getBoundingClientRect().bottom < 80 : window.scrollY > 500;
+      if (next !== previous) { previous = next; setVisible(next); }
+    };
     update();
     window.addEventListener("scroll", update, { passive: true });
     return () => window.removeEventListener("scroll", update);

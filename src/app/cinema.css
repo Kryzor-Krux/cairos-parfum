@@ -1,0 +1,50 @@
+.cinema {background:#1c0a0e;color:#f3e9da;position:relative;scroll-margin-top:0}
+.cinema-stage {height:100svh;min-height:720px;position:relative;overflow:clip;isolation:isolate}
+.cinema-photo {position:absolute;inset:36% -8% 2%;transform-origin:67% 57%;z-index:-3;mask-image:linear-gradient(transparent,#000 17%,#000 88%,transparent)}
+.cinema-photo img {object-fit:cover;object-position:85% center}
+.cinema-shade {position:absolute;inset:0;background:linear-gradient(180deg,#1c0a0e 0%,#1c0a0e22 42%,transparent 68%,#1c0a0e 100%);z-index:-2}
+.cinema-mist {position:absolute;width:100%;height:40%;bottom:9%;left:-28%;background:radial-gradient(ellipse,#eec89622,transparent 65%);opacity:.15;pointer-events:none;z-index:-1}
+.cinema-heading {position:relative;padding:115px 24px 0;z-index:1}
+.cinema-meta {display:flex;justify-content:space-between;gap:20px;color:#dbbdaa}
+.cinema-meta .maison-kicker {font-size:10px;letter-spacing:1.1px;max-width:245px}
+.cinema-meta>span:last-child {display:none;font-size:11px;letter-spacing:1px}
+.cinema h1 {font:clamp(58px,18vw,88px)/.91 var(--serif);letter-spacing:-3px;margin:24px 0 18px;max-width:700px}
+.cinema-line {display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.1em}
+.cinema-line>span {display:block}
+.cinema h1 em {color:#ddc5a4}
+.cinema-intro {font-size:14px;line-height:1.7;color:#e2cfc0}
+.cinema-curtain {position:absolute;inset:0;background:radial-gradient(ellipse at 70% 64%,#fffdf6,#e9e2d2 85%);opacity:0;z-index:2;pointer-events:none}
+.cinema-object {position:absolute;top:30%;left:calc(50% - 250px);width:500px;height:500px;z-index:3;opacity:0;mix-blend-mode:multiply;pointer-events:none}
+.cinema-object img {object-fit:contain}
+.cinema-manifesto {display:none;position:absolute;z-index:4;inset:120px 24px auto;color:#3e322a;pointer-events:none}
+.cinema-manifesto>.maison-kicker {font-size:10px}
+.cinema-manifesto p {font:clamp(45px,13vw,62px)/.98 var(--serif);letter-spacing:-1.6px;margin:20px 0}
+.cinema-manifesto em {color:#8d5447}
+.cinema-manifesto>span:last-child {display:block;font-size:13px;line-height:1.7;color:#716052}
+.cinema-enhanced .cinema-manifesto {display:block;opacity:0}
+.cinema-footer {position:absolute;z-index:5;bottom:30px;left:24px;right:24px;display:flex;flex-wrap:wrap;align-items:center;gap:18px;color:#f3e9da}
+.cinema-enter {display:flex;align-items:center;justify-content:space-between;gap:25px;width:100%;min-height:56px;border-block:1px solid currentColor;font-size:14px}
+.cinema-enter svg {transition:transform .25s}.cinema-enter:hover svg {transform:translateY(4px)}
+.cinema-discover {font-size:12px;display:flex;align-items:center;gap:20px;min-height:44px}
+.cinema-caption {display:none;font-size:10px;line-height:1.7;letter-spacing:.7px}
+.cinema-caption>span {display:block}.cinema-caption>span:last-child {letter-spacing:0;font-size:12px;opacity:.7}
+.cinema-scroll-line {position:absolute;z-index:6;right:10px;top:40%;height:100px;width:1px;background:#b1946e33}
+.cinema-scroll-line i {display:block;width:1px;height:100%;background:#bd946b;transform:scaleY(0);transform-origin:top}
+@media(min-width:768px) {
+ .cinema-stage {min-height:760px}
+ .cinema-heading {padding:150px 6vw 0}
+ .cinema h1 {font-size:clamp(90px,10.5vw,168px);letter-spacing:-6px;max-width:950px;margin:34px 0 28px}
+ .cinema-meta .maison-kicker {max-width:none}.cinema-meta>span:last-child {display:block}
+ .cinema-photo {inset:0 -8% 0 19%;mask-image:linear-gradient(90deg,transparent,#000 22%);}
+ .cinema-photo img {object-position:64% 50%}
+ .cinema-shade {background:linear-gradient(90deg,#1c0a0ec9,transparent 72%),linear-gradient(0deg,#1c0a0ea0,transparent 28%)}
+ .cinema-heading {pointer-events:none}.cinema-intro {font-size:16px}
+ .cinema-object {inset:-20% -21% -19% 25%;width:auto;height:auto}
+ .cinema-manifesto {inset:30% auto auto 8%;max-width:52%}.cinema-manifesto p {font-size:clamp(62px,6.3vw,103px);margin:28px 0}
+ .cinema-manifesto>span:last-child {font-size:15px}
+ .cinema-footer {left:6vw;right:6vw;bottom:45px;gap:40px}
+ .cinema-enter {max-width:270px}.cinema-caption {display:block;margin-left:auto;text-align:right}
+ .cinema-scroll-line {right:28px;height:150px}
+}
+@media(max-height:759px) and (max-width:767px) {.cinema-stage {height:780px}.cinema-photo {inset:36% -8% 4%}}
+@media(prefers-reduced-motion:reduce) {.cinema-scroll-line {display:none}.cinema-enter svg {transition:none}}

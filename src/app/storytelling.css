@@ -1,0 +1,60 @@
+.qahwa-story {position:relative;scroll-margin-top:-84px;background:#241217;color:#f3e4d0;--scene-light:#edc191}
+.qahwa-tone-1 {--scene-light:#edc4c1}.qahwa-tone-2 {--scene-light:#cb996c}
+.qahwa-stage {position:relative;isolation:isolate;overflow:clip;height:100svh;min-height:810px;padding:86px 24px 84px;display:flex;flex-direction:column}
+.qahwa-story:not([data-pinned=true]) .qahwa-stage {height:auto;min-height:900px}
+.qahwa-material {position:absolute;inset:-5%;z-index:-4}
+.qahwa-material img {object-fit:cover;object-position:70% center;opacity:.58}
+.qahwa-shade {position:absolute;inset:0;background:linear-gradient(180deg,#231318e6,#2a171866 37%,#231318f0 65%);z-index:-3}
+.qahwa-top {display:flex;justify-content:space-between;gap:20px;align-items:center;color:#e8c8aa}
+.qahwa-top .maison-kicker {max-width:190px;font-size:10px;letter-spacing:1.3px}
+.qahwa-top>span:last-child {font-size:10px;line-height:1.65;text-align:right;white-space:nowrap}
+.qahwa-chapters {display:flex;gap:16px;margin-top:20px}
+.qahwa-chapters button {position:relative;display:flex;align-items:center;gap:10px;background:none;min-height:46px;flex:1;text-align:left;font-size:10px;letter-spacing:.7px;text-transform:uppercase;color:#d1b4a2;padding:0 0 10px}
+.qahwa-chapters button>span {font:22px var(--serif)}
+.qahwa-chapters i {position:absolute;bottom:0;left:0;right:0;height:1px;background:#d1b4a23d}
+.qahwa-chapters [aria-current] {color:#fff1d9}.qahwa-chapters [aria-current] i {height:2px;background:#dec29c}
+.qahwa-art {position:relative;min-height:200px;flex:1;display:grid;place-items:center;isolation:isolate}
+.qahwa-word {position:absolute;top:18%;font:italic clamp(60px,21vw,105px)/1 var(--serif);letter-spacing:-3px;opacity:.45;color:var(--scene-light);transition:color .5s;white-space:nowrap;z-index:3;pointer-events:none}
+.qahwa-halo {position:absolute;width:170px;height:180px;background:radial-gradient(ellipse,var(--scene-light),transparent 68%);opacity:.17}
+.qahwa-art-motion {position:absolute;inset:0;display:flex;justify-content:center}
+.qahwa-sequence {position:absolute!important;width:170px!important;height:205px!important;bottom:0;border-radius:3px;background:#e5cfad;overflow:hidden;isolation:isolate;box-shadow:0 12px 50px #14070b80}
+.qahwa-sequence>div {mix-blend-mode:multiply;position:absolute!important;inset:auto!important;top:-85px!important;left:calc(50% - 175px)!important;width:350px!important;height:350px!important}
+.qahwa-sequence canvas {mix-blend-mode:multiply}
+.qahwa-light {position:absolute;bottom:0;width:90%;height:100%;background:radial-gradient(ellipse at 50% 75%,#ecbc6422,transparent 67%);pointer-events:none;z-index:4}
+.qahwa-art-caption {display:none}
+.qahwa-editorial {position:relative;z-index:5;margin-top:17px}
+.qahwa-copy>.maison-kicker {font-size:10px;color:#d3ad8e}
+.qahwa-copy h2 {font:37px/.98 var(--serif);letter-spacing:-.8px;margin:9px 0 12px;max-width:320px;min-height:72px}
+.qahwa-copy p {font-size:14px;line-height:1.6;color:#d8c4b8;max-width:440px;min-height:67px}
+.qahwa-notes {margin-top:19px;min-width:0}
+.qahwa-note-hint {font-size:10px;letter-spacing:1.4px;color:#c9a48b}
+.qahwa-note-buttons {display:flex;gap:8px;margin:9px -24px 0;padding:0 24px 7px;overflow-x:auto;scrollbar-width:thin;scrollbar-color:#8c6452 transparent;scroll-padding:24px}
+.qahwa-note-buttons button {display:flex;align-items:center;justify-content:space-between;gap:15px;flex-shrink:0;min-height:44px;background:#37202377;border:1px solid #b18c7155;padding:10px 13px;font-size:12px}
+.qahwa-note-buttons button[aria-expanded=true] {background:#e5c29b;color:#38221e}.qahwa-note-buttons .rotated {transform:rotate(45deg)}
+.qahwa-notes>p {font-size:12px;line-height:1.65;min-height:40px;margin-top:4px;color:#d0b6a3}
+.qahwa-bottom {display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid #d1ac8630;padding-top:12px;margin-top:12px;position:relative;z-index:5}
+.qahwa-bottom>span {display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.8px}.qahwa-bottom>a {display:flex;gap:10px;align-items:center;min-height:44px;font-size:12px}
+.qahwa-progress {position:absolute;bottom:0;left:0;right:0;height:2px;background:#bfa38311}.qahwa-progress i {display:block;height:100%;background:#b89469;transform-origin:left;transform:scaleX(0)}
+.qahwa-outro {padding:45px 24px 55px;background:#29191f;color:#eee0c8;display:flex;flex-direction:column;gap:30px}
+.qahwa-outro>p {font:42px/.95 var(--serif);letter-spacing:-1px}.qahwa-outro em {color:#c2947e}
+.qahwa-outro small {display:block;font-size:12px;line-height:1.7;color:#baa293;max-width:310px;margin-top:15px}
+@media(min-width:768px) {
+ .qahwa-stage {padding:105px 6vw 40px;min-height:820px;display:grid;grid-template-columns:1.1fr 1fr;grid-template-rows:auto auto 1fr auto;gap:0 5vw}
+ .qahwa-top {grid-column:1/-1}.qahwa-top .maison-kicker {max-width:none;font-size:11px}
+ .qahwa-chapters {grid-column:2;grid-row:2;margin-top:45px;gap:25px}
+ .qahwa-chapters button {font-size:11px}
+ .qahwa-art {grid-column:1;grid-row:2/4;margin-left:-3vw;min-height:500px}
+ .qahwa-word {font-size:clamp(80px,10vw,170px);top:12%;left:0}
+ .qahwa-sequence {width:250px!important;height:350px!important;bottom:4%}
+ .qahwa-sequence>div {top:-155px!important;left:calc(50% - 300px)!important;width:600px!important;height:600px!important}
+ .qahwa-art-caption {display:block;position:absolute;bottom:-15px;font-size:10px;letter-spacing:1.4px;color:#c09e8b}
+ .qahwa-editorial {grid-column:2;grid-row:3;align-self:center;margin:28px 0 0;min-width:0}
+ .qahwa-copy h2 {font-size:clamp(44px,4.3vw,72px);max-width:540px;min-height:2em;margin:20px 0}
+ .qahwa-copy p {font-size:15px;line-height:1.8;min-height:82px}
+ .qahwa-note-buttons {margin:12px 0 0;padding:0 0 9px}.qahwa-notes>p {max-width:440px;min-height:48px;font-size:13px}
+ .qahwa-bottom {grid-column:1/-1;margin-top:24px}.qahwa-bottom>span {font-size:11px}
+ .qahwa-outro {padding:65px 8vw 75px;flex-direction:row;align-items:center;justify-content:space-between}.qahwa-outro>p {font-size:64px}
+}
+@media(max-width:359px) {.qahwa-top .maison-kicker {font-size:10px;max-width:150px}.qahwa-chapters {gap:10px}.qahwa-chapters button {gap:5px}.qahwa-copy h2 {font-size:33px}.qahwa-bottom>span {letter-spacing:0}.qahwa-stage {padding-inline:20px}}
+@media(max-width:767px) {.qahwa-story[data-pinned=true] .qahwa-bottom {display:none}.qahwa-story[data-pinned=true] .qahwa-art {min-height:190px}}
+@media(prefers-reduced-motion:reduce) {.qahwa-word {transition:none}.qahwa-progress {display:none}}

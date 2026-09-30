@@ -1,69 +1,105 @@
 # Cairo’s Parfum — O invisível deixa marca
 
-Experiência de marca em Next.js, React e TypeScript. A direção de arte combina seda bordô, luz âmbar, fotografia de campanha e tipografia editorial. A descoberta acontece em uma galeria interativa de fragrâncias, uma narrativa de notas guiada pela rolagem e um atelier pessoal em três escolhas.
+Campanha digital interativa em Next.js, React e TypeScript. A versão V4 apresenta fragrâncias por meio de fotografia, luz, narrativa guiada pelo scroll e uma consultoria olfativa em três escolhas. O objetivo continua sendo descobrir um perfume e iniciar uma conversa pelo WhatsApp.
 
-- Site: https://cairos-parfum.vercel.app
-- Código: https://github.com/Kryzor-Krux/cairos-parfum — repositório privado.
+- [Endereço de produção](https://cairos-parfum.vercel.app/)
+- [Repositório privado](https://github.com/Kryzor-Krux/cairos-parfum)
+- [Verificações da revisão atual](QUALITY-REPORT.md)
 
-## Executar
+Não há carrinho, checkout, login, pedidos, banco de dados ou painel administrativo. Produtos, recomendações e mensagens estão separados da interface para permitir evolução posterior sem introduzir essas funções agora.
 
-Requer Node.js 22.13 ou superior.
+## Executar e verificar
+
+Use Node.js 22.x. O lockfile fixa as versões instaladas; `npm ci` reproduz as dependências.
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Acesse http://localhost:3000. Para produção: `npm run build` e `npm start`.
-
-## Verificação
+Abra `http://localhost:3000`. Para verificar e executar a versão de produção:
 
 ```bash
 npm run typecheck
 npm test
 npm run build
+npm start
 ```
 
-## Experiência e interações
+Os testes em Node cobrem mensagens de WhatsApp, recomendações do Atelier, navegação de cenas e funções de carregamento de sequências. A validação visual e as medições em navegador são etapas separadas, registradas em `QUALITY-REPORT.md`.
 
-A abertura apresenta uma composição de campanha com movimento de profundidade. O menu em tela cheia dá acesso aos capítulos; a barra superior acompanha o progresso de leitura e os atalhos mobile mantêm seleção, descoberta e contato acessíveis.
+## Experiência V4
 
-A galeria permite trocar entre quatro perfumes por arraste, setas, teclado e seleção direta. Cada fragrância tem atmosfera própria, fotografia oficial, detalhes e notas divididas em abertura, coração e fundo. A consulta leva o nome do perfume para o atendimento.
+O hero parte da campanha em seda bordô e luz âmbar. Texto recortado, névoa e uma mudança de iluminação conduzem ao frasco oficial. Em janelas com pelo menos 760 px de altura e sem preferência de movimento reduzido, GSAP acrescenta pin e scrub. A progressão extra usa aproximadamente 1,25 altura de janela abaixo de 768 px de largura e 1,6 nas demais larguras. Em janelas baixas, a abertura permanece no fluxo normal.
 
-A narrativa do Khamrah Qahwa revela três capítulos durante a rolagem. As notas são interativas: um toque revela o papel de cada ingrediente na composição. Em telas de pouca altura e com movimento reduzido, os capítulos usam navegação manual e a seção deixa de prender a composição à janela.
+A coleção mantém quatro perfumes reais. Mobile e tablet usam rolagem horizontal nativa com scroll snap e parte do próximo card visível. Em desktop com ponteiro fino, largura mínima de 1024 px, altura mínima de 740 px e movimento permitido, a rolagem vertical conduz os quatro painéis horizontalmente. Índice, setas, teclado e link para pular a seleção oferecem caminhos diretos. Com movimento reduzido, os quatro artigos aparecem em sequência estática. As notas usam `details` nativo e abas com navegação por teclado.
 
-O Atelier Cairo’s considera sensação, momento e presença. As três respostas alimentam uma recomendação editorial determinística entre os quatro perfumes da seleção. O resultado apresenta o perfume, notas, justificativa e as escolhas feitas. É possível ajustar as respostas, recomeçar e levar o resultado completo para uma conversa. Os pesos são afinidades com os perfis de notas, sem pontuação de desempenho ou promessa de adequação universal.
+A história do Khamrah Qahwa acompanha abertura, coração e fundo conforme as notas do fabricante. Em janelas com pelo menos 820 px de altura e movimento permitido, o scroll sincroniza produto, luz e capítulos. Nas demais, os capítulos são escolhidos pelos botões. As descrições sensoriais são editoriais; os ingredientes permanecem ligados à fonte de dados dos produtos.
 
-Os componentes respeitam a preferência de movimento reduzido. O atendimento usa um diálogo nativo com retorno de foco e fechamento por Escape. Nenhuma mensagem é enviada automaticamente: o visitante escolhe Cássio ou Medeiros e confirma o envio no WhatsApp.
+O Atelier considera sensação, momento e presença. A recomendação é determinística, baseada em afinidades editoriais, e sempre aponta para um dos quatro perfumes existentes. O visitante pode voltar, ajustar escolhas ou recomeçar. O resultado leva o nome do perfume e as três respostas para uma mensagem de consulta.
 
-## Conteúdo e manutenção
+Menu e atendimento usam diálogos nativos, fechamento por Escape, bloqueio de scroll e retorno de foco. Ao escolher Cássio ou Medeiros, o site abre o WhatsApp com a mensagem preparada. O visitante revisa e envia; a aplicação não envia mensagens automaticamente.
 
-- `src/app/page.tsx`: estrutura e conteúdo da experiência.
-- `src/components/maison.tsx`: menu, campanha, introdução, narrativa sensorial e relatos.
-- `src/components/perfume-gallery.tsx`: galeria, gestos e exploração das notas.
-- `src/components/scent-atelier.tsx`: escolhas, progresso e resultado do atelier.
-- `src/components/experience.tsx`: atendimento, diálogo, atalhos mobile e perguntas frequentes.
-- `src/lib/atelier.ts`: perfis, pesos editoriais, recomendação e mensagem do resultado.
-- `src/lib/contact.ts`: mensagens e geração dos links de WhatsApp.
-- `src/data/perfumes.ts`: produtos, notas, fontes, contatos e relatos.
-- `src/app/globals.css`: fundamentos de estilo e elementos compartilhados.
-- `src/app/maison.css`, `gallery.css` e `atelier.css`: direção de arte e adaptações de cada experiência.
-- `public/images/`: imagens locais otimizadas em WebP.
+## Arquitetura e manutenção
 
-Não há carrinho, pagamento, formulário de coleta, analytics ou banco de dados. As escolhas do atelier ficam apenas no estado da página.
+| Arquivo ou diretório | Responsabilidade |
+| --- | --- |
+| `src/app/page.tsx` | Ordem dos capítulos e composição da página. |
+| `src/app/layout.tsx` | Fontes, metadata, Open Graph, JSON-LD da organização e runtime de movimento. |
+| `src/components/hero/cinematic-hero.tsx` | Abertura e transição cinematográfica. |
+| `src/components/layout/` | Menu, introdução da marca e rodapé. |
+| `src/components/perfume-gallery.tsx` | Coleção, scroll horizontal, notas e consultas por produto. |
+| `src/components/storytelling/qahwa-story.tsx` | Narrativa olfativa e sincronização da cena. |
+| `src/components/storytelling/image-sequence.tsx` | Canvas opcional, carregamento progressivo e imagem alternativa. |
+| `src/components/scent-atelier.tsx` | Escolhas, transições e ficha de recomendação. |
+| `src/components/testimonials/voices.tsx` | Relatos existentes; aceita capturas de conversa opcionais. |
+| `src/components/contact/final-contact.tsx` | Fechamento da campanha, entrega e perguntas frequentes. |
+| `src/components/experience.tsx` | Contexto de atendimento, diálogo, atalhos mobile e FAQ. |
+| `src/components/motion/` | Runtime Lenis, texto dividido e revelações reutilizáveis. |
+| `src/lib/motion/` | GSAP compartilhado, easing, navegação, sinais do dispositivo e orçamento de sequências. |
+| `src/lib/atelier.ts`, `src/lib/contact.ts` | Recomendação, justificativas e mensagens. |
+| `src/data/perfumes.ts`, `src/data/scent-story.ts` | Produtos, notas, contatos, relatos e capítulos sensoriais. |
+| `src/lib/analytics.ts`, `src/components/analytics-runtime.tsx` | Eventos locais da experiência. |
+| `src/lib/site.ts`, `src/app/robots.ts`, `src/app/sitemap.ts` | URL canônica, dados do site e descoberta por buscadores. |
 
-## Fontes e decisões editoriais
+`globals.css` contém fundamentos compartilhados; `maison.css` mantém layout, navegação e identidade editorial. `cinema.css`, `gallery.css`, `storytelling.css`, `atelier.css` e `voices.css` tratam suas respectivas cenas. Os antigos componentes agregados `maison.tsx` e `immersive.tsx`, além de `immersive.css`, foram substituídos pela estrutura acima.
 
-As notas e fotografias oficiais dos quatro perfumes vêm das páginas dos fabricantes vinculadas em `src/data/perfumes.ts`. Famílias resumidas, sensações, descrições e afinidades do atelier são redação editorial. Consulte disponibilidade e valores no atendimento; preços e estoque não são simulados.
+### Movimento
 
-Os contatos de Cássio e Medeiros foram obtidos no link público da marca (`https://linkme.bio/cairos?utm_source=instagram`). A entrega em Taubaté e região foi informada no perfil público da Cairo’s, com orientação para confirmar a cobertura do endereço.
+GSAP controla timelines, pin, scrub e transformações das cenas. Motion controla estados de interface, menu, Atelier, abas e microinterações. Não atribua a mesma propriedade do mesmo elemento às duas bibliotecas.
 
-Os três relatos são trechos do PDF fornecido: páginas 16 (So Candid), 15 (Club de Nuit) e 19 (Fakhar Black). Os dois últimos unem mensagens da mesma conversa com pontuação de leitura. Não publicamos nomes, avatares ou capturas de conversas. Não são garantia de desempenho universal.
+Lenis só é carregado em desktop a partir de 1024 px com ponteiro fino, sem movimento reduzido, economia de dados ou conexão 2G/3G informada. Touch mantém scroll nativo. O ticker do GSAP alimenta Lenis e os eventos de scroll atualizam ScrollTrigger. Modais suspendem essa suavização; áreas com `data-native-scroll` preservam rolagem própria. Botões de capítulos devem usar `scrollSceneTo()` para não disputar com Lenis.
 
-Veja `ASSETS.md` para a procedência das fotos oficiais, fontes e demais arquivos. `CAMPAIGN-ASSETS.md` documenta as duas imagens de campanha geradas com IA, suas referências, prompts e otimização. A imagem de campanha do Qahwa é uma interpretação visual; a galeria e o resultado usam a fotografia oficial do frasco.
+A implementação limpa timelines, media queries, observers, eventos e callbacks ao desmontar. Veja [a documentação do runtime](src/lib/motion/README.md) para contratos de integração e primitives de reveal.
 
-## Publicação e manutenção editorial
+### Sequência de imagens: preparada, ainda sem frames
 
-O projeto está conectado à Vercel pelo repositório privado do GitHub. Configure um domínio personalizado com `NEXT_PUBLIC_SITE_URL` (ver `.env.example`); na Vercel, o domínio de produção também é detectado por `VERCEL_PROJECT_PRODUCTION_URL`.
+A cena atual usa a fotografia oficial do Qahwa com transformações e iluminação. Não existe uma rotação fotografada ou renderizada em sequência neste repositório. O componente `ImageSequence` está integrado sem manifest, portanto não solicita frames inexistentes nem oculta a fotografia alternativa.
 
-Mantenha seleção comercial, contatos e cobertura de entrega atualizados com a marca. A assinatura tipográfica e o ícone podem ser substituídos pelos arquivos oficiais quando disponíveis. Produtos, fontes e perfis estão separados da interface para permitir futuras atualizações de catálogo ou integração com CMS.
+Para material futuro, adicione frames reais em `public/sequences/qahwa/desktop/` e `public/sequences/qahwa/mobile/`, depois forneça um manifest. O sistema tem preload progressivo, cache limitado, variantes por largura, cancelamento de downloads e fallback para movimento reduzido, economia de dados, redes lentas e memória limitada. O procedimento completo está em [public/sequences/qahwa/README.md](public/sequences/qahwa/README.md). Nenhuma biblioteca WebGL ou Lottie faz parte da aplicação.
+
+### Eventos e privacidade
+
+`trackEvent()` dispara um `CustomEvent` chamado `cairos:analytics`, com `detail: { name, properties }`. Os eventos disponíveis são `hero_view`, `collection_view`, `perfume_view`, `perfume_cta_click`, `atelier_start`, `atelier_step`, `atelier_complete`, `whatsapp_click` e `instagram_click`.
+
+As propriedades permitidas são `perfume_id`, `source`, `step` e `choice`. O helper filtra os valores; não inclui telefone, texto da mensagem ou identificador do visitante. Não há SDK de analytics, envio desses eventos a um servidor, cookies ou persistência das escolhas implementados pela aplicação. O ponto de integração permite acrescentar um provedor posteriormente; isso requer uma decisão própria de coleta e privacidade. As escolhas do Atelier ficam apenas no estado da página.
+
+## Conteúdo, imagens e fontes
+
+As notas e fotografias dos quatro perfumes vêm das páginas de fabricantes vinculadas em `src/data/perfumes.ts`. Famílias resumidas, sensações, descrições e afinidades do Atelier são redação editorial. A disponibilidade permanece `unknown`: preços, estoque, prazo, garantia e condições de pagamento não são simulados.
+
+Os contatos de Cássio e Medeiros vieram do [link público da marca](https://linkme.bio/cairos?utm_source=instagram). A entrega em Taubaté e região foi informada no perfil público da Cairo’s; o site pede confirmação da cobertura do endereço. Essas informações devem ser reconfirmadas com a marca quando houver mudanças comerciais.
+
+Os três relatos foram extraídos do PDF fornecido: páginas 16 (So Candid), 15 (Club de Nuit) e 19 (Fakhar Black). Os dois últimos combinam mensagens da mesma conversa com pontuação de leitura. Não são publicados nomes, avatares, datas inventadas ou screenshots nesta versão. O componente aceita capturas futuras, com dados pessoais revisados antes de publicação. Relatos individuais não são promessa de desempenho universal.
+
+Fotografias de produto e fundos usam `next/image`. A campanha do hero é uma interpretação visual gerada com IA a partir da referência do Qahwa; a galeria, o Atelier e o fallback da história usam a fotografia oficial. O preload explícito é reservado à imagem principal do hero, servida como WebP já otimizado para evitar transformação no primeiro acesso. Cormorant Garamond 400 e Manrope 400/600 são servidas localmente em WOFF2 por `next/font/local`, com `display: swap`; os TTF e licenças foram preservados.
+
+- [ASSETS.md](ASSETS.md): procedência e uso atual de imagens e fontes.
+- [CAMPAIGN-ASSETS.md](CAMPAIGN-ASSETS.md): prompts, referências e arquivos de campanha.
+- [FONT-ASSETS.md](FONT-ASSETS.md): conversão WOFF2, tamanhos e verificações das fontes.
+
+## Publicação
+
+O destino do projeto é a Vercel, ligado ao repositório privado no GitHub. A URL base é centralizada em `src/lib/site.ts`: usa `NEXT_PUBLIC_SITE_URL` quando definida e, caso contrário, `https://cairos-parfum.vercel.app`. Ao configurar um domínio próprio, atualize essa variável para a URL pública completa. O valor `localhost` do `.env.example` destina-se apenas ao desenvolvimento.
+
+Metadata, canonical, sitemap, robots e JSON-LD usam essa URL. A revisão V4 só deve ser considerada publicada após confirmar o deploy e verificar a URL de produção; as verificações técnicas estão em `QUALITY-REPORT.md` e o registro final de commit/deployment acompanha a entrega em `../Cairos_Parfum_Entrega.md`.

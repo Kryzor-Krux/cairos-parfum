@@ -1,0 +1,25 @@
+.wordMask,
+.lineMask {
+  overflow: clip;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+  vertical-align: top;
+}
+
+.wordMask {
+  display: inline-block;
+}
+
+.lineMask {
+  display: block;
+}
+
+.piece {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .piece {
+    transform: none !important;
+  }
+}
